@@ -14,6 +14,5 @@
     "code-review",
     "swiftdoc",
     "xcode"
-  ],
-  "hooks": "./hooks/hooks.json"
+  ]
 }
