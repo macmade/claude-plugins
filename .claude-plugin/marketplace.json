@@ -1,0 +1,14 @@
+{
+  "name": "macmade",
+  "owner": {
+    "name": "macmade"
+  },
+  "description": "Claude Code plugin marketplace by XS-Labs.",
+  "plugins": [
+    {
+      "name": "xs",
+      "source": "./xs",
+      "description": "Reusable Claude Code commands and tooling for XS-Labs projects."
+    }
+  ]
+}

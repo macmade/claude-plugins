@@ -1,0 +1,19 @@
+{
+  "name": "xs",
+  "version": "1.0.0",
+  "description": "Reusable Claude Code commands and tooling for XS-Labs projects.",
+  "author": {
+    "name": "macmade"
+  },
+  "license": "MIT",
+  "homepage": "https://github.com/macmade/claude-plugins",
+  "repository": "https://github.com/macmade/claude-plugins",
+  "keywords": [
+    "xs-labs",
+    "swift",
+    "code-review",
+    "swiftdoc",
+    "xcode"
+  ],
+  "hooks": "./hooks/hooks.json"
+}
