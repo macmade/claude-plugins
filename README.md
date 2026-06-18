@@ -65,10 +65,11 @@ Reusable commands and tooling for XS-Labs projects.
 
 | Command                   | Description                                                                                          |
 | ------------------------- | ---------------------------------------------------------------------------------------------------- |
-| `/review`                 | Perform a full, in-depth code review of the project and write the findings to `code-review.html`.    |
-| `/review-plan`            | Turn `code-review.html` into a milestone-based implementation plan in `code-review-plan.html`.       |
-| `/review-plan-implement`  | Implement the plan milestone by milestone with TDD, pausing after each one for review and commit.    |
-| `/swiftdoc`               | Document every type and member with SwiftDoc comments, validating and converting existing ones.      |
+| `/review`                 | Perform a full, in-depth code review of the project, writing the findings to Markdown or HTML.       |
+| `/plan`                   | Turn any source document (code review, roadmap, refactor notes, …) into a milestone-based plan.      |
+| `/implement`              | Implement a plan file milestone by milestone with TDD, pausing after each one for review and commit. |
+| `/doc`                    | Document every type and member with SwiftDoc or HeaderDoc comments, choosing the language and files. |
+| `/format`                 | Reformat repository sources with Xcode Format, choosing a configuration, file kinds, and git scope.  |
 
 **Hooks**
 

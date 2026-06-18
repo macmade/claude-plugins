@@ -26,17 +26,26 @@ Reformat source files in the current repository using **Xcode Format**. Follow t
   - C++ → `.cpp` `.cc` `.cxx` `.hpp` `.hh`
   - Objective-C → `.m` `.mm` `.h`
 
-## 4. Collect the files
+## 4. Choose the file scope (multiple selection)
+
+- Use `AskUserQuestion` with `multiSelect: true` so the user can pick one scope or any combination of scopes:
+  - **All files** — every tracked and untracked file in the repository.
+  - **Staged** — files staged for commit (the index).
+  - **Unstaged** — tracked files with unstaged modifications in the working tree.
+  - **Untracked** — files not yet tracked by git.
+- If **All files** is selected, ignore the other choices and use the full repository set. Otherwise take the **union** of the selected scopes and deduplicate.
+
+## 5. Collect the files
 
 - Work from the repository root (`git rev-parse --show-toplevel`).
-- Gather both tracked and untracked files, with submodules and gitignored files excluded automatically:
-  ```
-  git ls-files
-  git ls-files -o --exclude-standard
-  ```
-- Combine both lists and keep only files whose extension is in the selected set. These commands never descend into submodules, so submodule contents are excluded by construction.
+- For each selected scope, gather the corresponding files. All commands below exclude submodules and gitignored files by construction, and `--diff-filter=d` drops deleted paths so the formatter never runs on a file that no longer exists:
+  - **All files** → `git ls-files` and `git ls-files -o --exclude-standard`
+  - **Staged** → `git diff --cached --name-only --diff-filter=d`
+  - **Unstaged** → `git diff --name-only --diff-filter=d`
+  - **Untracked** → `git ls-files -o --exclude-standard`
+- Combine the lists for every selected scope, deduplicate, and keep only files whose extension is in the set chosen in step 3. These commands never descend into submodules, so submodule contents are excluded by construction.
 
-## 5. Confirm and format
+## 6. Confirm and format
 
 - Report how many files matched. If none match, stop and say so.
 - Otherwise, run the formatter **once** over all matched files with the chosen configuration, using `xargs` so large file lists are handled safely. For example, with configuration `NAME`:
