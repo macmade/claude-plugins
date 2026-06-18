@@ -42,4 +42,4 @@ Document every type and member in the chosen source files, including private and
 ## 5. Commit message
 
 - Provide a commit message following Conventional Commits. Look at the previous commits for examples.
-- Make sure to mention yourself as a co-author.
+- Add a co-author trailer in the standard git form `Co-Authored-By: Name <email>`, on its own line after a blank line at the end of the message, using your own model name and an Anthropic no-reply address.

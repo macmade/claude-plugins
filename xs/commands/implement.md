@@ -17,5 +17,5 @@ Implement a milestone-based plan, one milestone at a time. The plan can be any M
 
 - Read the plan file. Implement each milestone one by one, using TDD.
 - Pause after each milestone so the user can review and commit manually.
-- Provide a commit message following Conventional Commits. Look at the previous commits for examples. Make sure to mention yourself as a co-author. Do not mention milestones in the commit message.
+- Provide a commit message following Conventional Commits. Look at the previous commits for examples. Add a co-author trailer in the standard git form `Co-Authored-By: Name <email>`, on its own line after a blank line at the end of the message, using your own model name and an Anthropic no-reply address. Do not mention milestones in the commit message.
 - Update the plan file as you go, with implementation status, iterations, and review comments for each milestone.
