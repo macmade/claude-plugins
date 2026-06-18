@@ -29,4 +29,5 @@ Perform a full, in-depth code review of the project. Follow these steps exactly.
 - Read the Git history, if necessary or in doubt, to understand why certain decisions were made.
 - Back up your claims.
 - Focus on everything, including architecture, API, performance, security, stability, crashes, undefined behavior, etc.
+- When reviewing changes (staged/unstaged or a branch comparison), explicitly check for **regressions**: behavior, APIs, or guarantees that previously worked and are now altered, removed, or broken — including impacts on existing callers and tests.
 - Report your findings in the chosen format: at the derived filename for Markdown or HTML, or directly in the conversation for Inline.
