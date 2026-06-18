@@ -83,6 +83,7 @@ Reusable commands for XS-Labs projects.
 | `/implement`              | Implement a plan file milestone by milestone with TDD, pausing after each one for review and commit. |
 | `/doc`                    | Document every type and member with SwiftDoc or HeaderDoc comments, choosing the language and files. |
 | `/format`                 | Reformat repository sources with Xcode Format, choosing a configuration, file kinds, and git scope.  |
+| `/commit-message`         | Generate a Conventional Commits message for the current changes (staged, unstaged, untracked), without committing. |
 
 #### `xs-autoformat`
 
