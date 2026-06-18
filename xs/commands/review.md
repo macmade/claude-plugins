@@ -4,15 +4,29 @@ description: Perform a full, in-depth code review of the project, writing the fi
 
 Perform a full, in-depth code review of the project. Follow these steps exactly.
 
-## 1. Choose the output format
+## 1. Choose the review scope
 
-- Use `AskUserQuestion` as a **single-select** question to ask whether the findings should be written in **Markdown** or **HTML**.
-- Write the report to `code-review.md` or `code-review.html` accordingly.
+- Use `AskUserQuestion` as a **single-select** question to ask whether the review should cover the **whole repository**, only the **staged/unstaged changes**, or a **comparison against another branch**.
+  - **Whole repository**: review all files in the repository.
+  - **Staged/unstaged changes**: review only the changes reported by `git status` and `git diff` (both staged and unstaged), along with the context needed to understand them.
+  - **Compare against a branch**: review only the changes between the current branch and a chosen base branch.
+- If **Compare against a branch** is selected, determine the base branch:
+  - List the available branches with `git branch`.
+  - From that list, propose **only** the following as options, and only when they actually exist in the repository: `main`, `master`, `release`, `hotfix`, `development`.
+  - Use `AskUserQuestion` as a **single-select** question to let the user pick the base branch from those candidates.
+  - Review only the changes reported by `git diff <base-branch>...HEAD`, along with the context needed to understand them.
 
-## 2. Perform the review
+## 2. Choose the output format
 
-- Perform a complete, in-depth review. Make sure to read the whole source code and do not assume anything.
+- Use `AskUserQuestion` as a **single-select** question to ask how the findings should be reported: **Markdown**, **HTML**, or **Inline**.
+  - **Markdown**: write the report to `code-review.md`.
+  - **HTML**: write the report to `code-review.html`.
+  - **Inline**: report the findings directly in the conversation, skipping file generation.
+
+## 3. Perform the review
+
+- Perform a complete, in-depth review within the chosen scope. Make sure to read the relevant source code and do not assume anything.
 - Read the Git history, if necessary or in doubt, to understand why certain decisions were made.
 - Back up your claims.
 - Focus on everything, including architecture, API, performance, security, stability, crashes, undefined behavior, etc.
-- Report your findings in the chosen format at the derived filename.
+- Report your findings in the chosen format: at the derived filename for Markdown or HTML, or directly in the conversation for Inline.
