@@ -8,7 +8,12 @@
     {
       "name": "xs",
       "source": "./xs",
-      "description": "Reusable Claude Code commands and tooling for XS-Labs projects."
+      "description": "Reusable Claude Code commands for XS-Labs projects."
+    },
+    {
+      "name": "xs-autoformat",
+      "source": "./xs-autoformat",
+      "description": "Automatic Xcode Format hook for XS-Labs projects, intended for per-repository use."
     }
   ]
 }

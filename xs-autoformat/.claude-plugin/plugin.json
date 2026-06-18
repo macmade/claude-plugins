@@ -1,7 +1,7 @@
 {
-  "name": "xs",
-  "version": "2.0.0",
-  "description": "Reusable Claude Code commands for XS-Labs projects.",
+  "name": "xs-autoformat",
+  "version": "1.0.0",
+  "description": "Automatic Xcode Format hook for XS-Labs projects, intended for per-repository use.",
   "author": {
     "name": "macmade"
   },
@@ -11,9 +11,8 @@
   "keywords": [
     "xs-labs",
     "swift",
-    "code-review",
-    "swiftdoc",
-    "headerdoc",
-    "xcode"
+    "xcode",
+    "format",
+    "hook"
   ]
 }

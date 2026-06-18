@@ -12,24 +12,36 @@ claude-plugins
 A [Claude Code](https://docs.claude.com/en/docs/claude-code) plugin marketplace
 by XS-Labs, bundling reusable commands and tooling for XS-Labs projects.
 
+The marketplace ships two independent plugins so each can be installed at the
+scope that fits it:
+
+- **`xs`** — reusable commands, best installed **globally** so they are
+  available in every project.
+- **`xs-autoformat`** — an automatic Xcode Format hook, best installed
+  **per-repository** so it only runs where you want it to.
+
 ### Installation
 
-#### Globally, for all your projects
-
-Add the marketplace, then install the `xs` plugin:
+First, add the marketplace:
 
 ```
 /plugin marketplace add macmade/claude-plugins
+```
+
+#### `xs` commands, globally
+
+Install the commands plugin to your user settings (`~/.claude/settings.json`),
+making the commands available across every project you open:
+
+```
 /plugin install xs@macmade
 ```
 
-This installs to your user settings (`~/.claude/settings.json`), making the
-plugin available across every project you open.
+#### `xs-autoformat` hook, per-repository
 
-#### For a single project or team repository
-
-To enable the plugin only in a given project — and share it with everyone who
-clones the repo — commit a `.claude/settings.json` to that project:
+To enable the formatting hook only in a given project — and share it with
+everyone who clones the repo — commit a `.claude/settings.json` to that
+project:
 
 ```json
 {
@@ -42,7 +54,7 @@ clones the repo — commit a `.claude/settings.json` to that project:
     }
   },
   "enabledPlugins": {
-    "xs@macmade": true
+    "xs-autoformat@macmade": true
   }
 }
 ```
@@ -52,16 +64,17 @@ workspace trust dialog. Alternatively, install interactively scoped to the
 current project:
 
 ```
-/plugin install xs@macmade --scope project
+/plugin install xs-autoformat@macmade --scope project
 ```
+
+Both plugins are independent: install either one, or both, at whichever scope
+you prefer.
 
 ### Plugins
 
 #### `xs`
 
-Reusable commands and tooling for XS-Labs projects.
-
-**Commands**
+Reusable commands for XS-Labs projects.
 
 | Command                   | Description                                                                                          |
 | ------------------------- | ---------------------------------------------------------------------------------------------------- |
@@ -71,9 +84,9 @@ Reusable commands and tooling for XS-Labs projects.
 | `/doc`                    | Document every type and member with SwiftDoc or HeaderDoc comments, choosing the language and files. |
 | `/format`                 | Reformat repository sources with Xcode Format, choosing a configuration, file kinds, and git scope.  |
 
-**Hooks**
+#### `xs-autoformat`
 
-A `PostToolUse` hook runs [Xcode Format](https://github.com/macmade/Xcode-Format)
+A `PostToolUse` hook that runs [Xcode Format](https://github.com/macmade/Xcode-Format)
 on every Swift/C/C++/Objective-C file written or edited, using the
 `XS-Labs (MIT)` configuration. It is a no-op on non-macOS systems, for
 unsupported file types, or when the formatter is not installed.
