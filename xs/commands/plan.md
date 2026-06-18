@@ -9,7 +9,7 @@ Turn a source document into a milestone-based implementation plan. The source ca
 
 - If a filename was provided as an argument (`$ARGUMENTS`), use it as the source document.
 - Otherwise, find candidate documents in the repository and ask the user which one to use:
-  - List `*.md` and `*.html` files (e.g. `git ls-files '*.md' '*.html'` plus untracked ones via `git ls-files -o --exclude-standard '*.md' '*.html'`), excluding files that already look like plans (names ending in `-plan.md` / `-plan.html`).
+  - List `*.md` and `*.html` files (e.g. `git ls-files '*.md' '*.html'` plus untracked ones via `git ls-files -o --exclude-standard '*.md' '*.html'`), excluding files that already look like plans (names ending in `-plan.md` / `-plan.html`) and the project's `README.md`.
   - Present them with `AskUserQuestion` as a **single-select** question. If no candidates exist, stop and tell the user.
 - If the chosen file does not exist, stop and say so.
 
