@@ -1,6 +1,6 @@
 {
   "name": "xs",
-  "version": "2.0.5",
+  "version": "2.0.6",
   "description": "Reusable Claude Code commands for XS-Labs projects.",
   "author": {
     "name": "macmade"
