@@ -29,6 +29,6 @@ Generate a commit message describing the current changes in the repository. Only
 ## 4. Write the commit message
 
 - Follow Conventional Commits. Look at the previous commits (`git log`) for the types, scopes, and style actually used in this repository, and match them.
-- Use a concise, imperative subject line. Add a body only when the changes need explanation beyond the subject.
+- Use a concise, imperative subject line, followed by a body that describes the changes. Always include a description in the body, explaining what changed and why.
 - Add a co-author trailer in the standard git form `Co-Authored-By: Name <email>`, on its own line after a blank line at the end of the message, using your own model name and an Anthropic no-reply address.
 - Output the proposed commit message directly in the conversation, inside a fenced code block so it is easy to copy. Do not run `git commit` or modify the repository in any way.
