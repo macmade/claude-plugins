@@ -23,6 +23,7 @@ Implement a milestone-based plan, one milestone at a time. The plan can be any M
 ## 3. Implement
 
 - Read the plan file. Implement each milestone one by one, using the approach chosen in step 2.
+- Before starting each milestone, ask the user to confirm with `AskUserQuestion`, giving the milestone's title and a short description of what it involves. Only begin implementing once the user confirms.
 - Pause after each milestone so the user can review and commit manually.
 - Provide a commit message. Follow Conventional Commits. Look at the previous commits (`git log`) for the types, scopes, and style actually used in this repository, and match them.
 - Use a concise, imperative subject line, followed by a body that describes the changes. Always include a description in the body, explaining what changed and why. Do not mention milestones in the commit message.
