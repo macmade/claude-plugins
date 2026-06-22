@@ -20,7 +20,7 @@ Reformat source files in the current repository using **Xcode Format**. Follow t
 ## 3. Choose the file kinds (multiple selection)
 
 - Use `AskUserQuestion` with `multiSelect: true` to let the user pick one or more of: **Swift**, **C**, **C++**, **Objective-C**.
-- Map each chosen kind to file extensions, then take the **union** and **deduplicate** (so `.h` is included if any of C, C++, or Objective-C is selected):
+- Map each chosen kind to file extensions, then take the **union** and **deduplicate** (so `.h` is included if either C or Objective-C is selected):
   - Swift → `.swift`
   - C → `.c` `.h`
   - C++ → `.cpp` `.cc` `.cxx` `.hpp` `.hh`
@@ -48,8 +48,8 @@ Reformat source files in the current repository using **Xcode Format**. Follow t
 ## 6. Confirm and format
 
 - Report how many files matched. If none match, stop and say so.
-- Otherwise, run the formatter **once** over all matched files with the chosen configuration, using `xargs` so large file lists are handled safely. For example, with configuration `NAME`:
+- Otherwise, run the formatter **once** over all matched files with the chosen configuration, using `xargs` so large file lists are handled safely. Delimit the paths with NUL and use `xargs -0` so file names containing spaces are handled correctly. For example, with configuration `NAME`:
   ```
-  printf '%s\n' "${files[@]}" | xargs "/Applications/Xcode Format.app/Contents/MacOS/Xcode Format" --config "NAME"
+  printf '%s\0' "${files[@]}" | xargs -0 "/Applications/Xcode Format.app/Contents/MacOS/Xcode Format" --config "NAME"
   ```
 - Do not silence errors: if the formatter writes to stderr or exits non-zero for a file, surface that to the user. Report a short summary of what was formatted when done.
