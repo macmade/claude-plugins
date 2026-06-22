@@ -29,3 +29,4 @@ Turn a source document into a milestone-based implementation plan. The source ca
 - If the project uses submodules and you think a change is needed in one of them to improve the implementation, ask the user. Changes to submodules may be acceptable, but the user decides on a case-by-case basis.
 - Split the plan into small, meaningful milestones that can be reviewed and committed individually, and write it to the derived plan file.
 - Write the plan as a living document: give each milestone a clear place to record implementation status, iterations, and review comments, since the implement command updates the plan in place as work progresses.
+- Include the date the plan was generated at the top of the file.

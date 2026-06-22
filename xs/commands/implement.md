@@ -26,3 +26,4 @@ Implement a milestone-based plan, one milestone at a time. The plan can be any M
 - Pause after each milestone so the user can review and commit manually.
 - Provide a commit message following Conventional Commits. Look at the previous commits for examples. Add a co-author trailer in the standard git form `Co-Authored-By: Name <email>`, on its own line after a blank line at the end of the message, using your own model name and an Anthropic no-reply address. Do not mention milestones in the commit message.
 - Update the plan file as you go, with implementation status, iterations, and review comments for each milestone.
+- When completing a milestone, also mention the date it was completed in its implementation section.
