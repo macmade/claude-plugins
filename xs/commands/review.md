@@ -11,10 +11,10 @@ Perform a full, in-depth code review of the project. Follow these steps exactly.
   - **Staged/unstaged changes**: review only the changes reported by `git status` and `git diff` (both staged and unstaged), along with the context needed to understand them.
   - **Compare against a branch**: review only the changes between the current branch and a chosen base branch.
 - If **Compare against a branch** is selected, determine the base branch:
-  - List the available branches with `git branch`.
-  - From that list, propose as quick-pick options the following, and only when they actually exist in the repository: `main`, `master`, `release`, `hotfix`, `development`. Always add an **Other branch** option as well.
+  - List the available remote branches with `git branch -r` (the `origin` remote). Work with the remote branches only — never the local ones.
+  - From that list, propose as quick-pick options the following, and only when they actually exist on `origin`: `origin/main`, `origin/master`, `origin/release`, `origin/hotfix`, `origin/development`. Always add an **Other branch** option as well.
   - Use `AskUserQuestion` as a **single-select** question to let the user pick the base branch.
-  - If the user picks **Other branch**, present a second `AskUserQuestion` single-select listing all available branches from `git branch` (excluding the current branch) so the user can choose any one.
+  - If the user picks **Other branch**, present a second `AskUserQuestion` single-select listing all available remote branches from `git branch -r` (excluding `origin/HEAD` and the remote-tracking branch for the current branch) so the user can choose any one.
   - Review only the changes reported by `git diff <base-branch>...HEAD`, along with the context needed to understand them.
 
 ## 2. Choose the output format
