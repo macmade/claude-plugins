@@ -21,15 +21,15 @@ Generate a project roadmap from points entered one at a time, written to a Markd
 
 ## 3. Collect the roadmap points
 
-- Collect the points one at a time using `AskUserQuestion`. In each prompt, the user types the next point as free text, and you also offer a **Finished** option to indicate there are no more points.
-- After capturing a point, repeat the prompt for the next one. Continue until the user selects **Finished**.
-- Require at least one point. If the user selects **Finished** before entering any point, ask them to add at least one.
+- Collect the points one at a time, prompting the user to type each point as free text. The user signals the end by typing `finish` or `done` as a point.
+- After capturing a point, repeat the prompt for the next one. Continue until the user signals the end.
+- Require at least one point. If the user signals the end before entering any point, ask them to add at least one.
 - Capture each point's text verbatim as the user enters it; do not rewrite it yet. You will refine wording in step 4.
 
 ## 4. Understand the points
 
-- If the current directory is inside a Git repository (`git rev-parse --is-inside-work-tree`), analyze the repository to make sure you actually understand each roadmap point in the context of the codebase. Read the relevant source code — do not assume anything.
-- Ask the user any clarifying questions needed to capture each point accurately, and record every question you asked together with the user's answer in the roadmap's Questions & answers section (see the template).
+- If the current directory is inside a Git repository (`git rev-parse --is-inside-work-tree`), take a quick look at the repository to understand the overall scope and purpose of the project. Keep this fast — get a sense of what the project is (e.g. README, top-level structure), and do not dive deep into the source code.
+- Ask the user any clarifying questions needed to capture each point accurately. Use the answers only to refine the points — do not record the questions or answers in the roadmap.
 - When extending an existing roadmap, also read its existing points so the new ones are consistent with what is already there and not redundant.
 - If you are not inside a repository, skip the repository analysis but still ask clarifying questions if a point is ambiguous.
 
@@ -50,15 +50,14 @@ Generate a project roadmap from points entered one at a time, written to a Markd
 
 Every roadmap has the same structure regardless of the output format chosen in step 5. The template below defines the **content** the roadmap must contain — not its formatting. Render each item idiomatically in the chosen format (Markdown or HTML), and replace every `<...>` placeholder.
 
+Keep the roadmap focused on the points themselves. Do not add technical or implementation details on your own — include them only when they are absolutely relevant or explicitly provided by the user.
+
 - **Title** — `<roadmap title>`
 - **Generated** — `<YYYY-MM-DD>`
 - **Overview** — an optional paragraph or two describing the purpose and theme of the roadmap. Include only if it adds value; omit otherwise.
-- **Questions & answers** — every clarifying question you asked while building the roadmap, each paired with the user's answer. Omit the section only if no questions were asked.
-- **Notes** — an optional, free-form section between the overview and the points for anything useful to capture: relevant context, key files or components, assumptions, dependencies, or references. Include only what is genuinely helpful; omit the section if there is nothing worth recording.
 - **Roadmap** — the core of the document: the points in order, repeated one entry per point. Each point contains:
   - **Title** — `<short title for the point>`
   - **Description** — what the point is and why it matters, refined from the user's text with the context gathered in step 4.
-- **Appendix** — an optional, free-form section at the very end for supporting material that does not belong to a single point: diagrams, references, or extra detail. Include only what is genuinely helpful; omit the section if there is nothing worth recording.
 
 ### HTML rendering
 
