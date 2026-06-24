@@ -6,10 +6,17 @@ Generate a commit message describing the current changes in the repository. Only
 
 ## 1. Choose the change scope (multiple selection)
 
-- Use `AskUserQuestion` with `multiSelect: true` so the user can pick one scope or any combination of scopes:
-  - **Staged** — changes staged for commit (the index).
-  - **Unstaged** — tracked files with unstaged modifications in the working tree.
-  - **Untracked** — files not yet tracked by git.
+- First, from the repository root, detect which scopes actually contain changes:
+  - **Staged** — `git diff --cached --name-only` returns at least one file.
+  - **Unstaged** — `git diff --name-only` returns at least one file.
+  - **Untracked** — `git ls-files -o --exclude-standard` returns at least one file.
+- Decide how to proceed based on how many scopes have changes:
+  - **No scope** has changes → stop and tell the user there is nothing to describe. Do not ask anything.
+  - **Exactly one scope** has changes → skip the prompt and use that scope directly. Tell the user which scope you are using.
+  - **More than one scope** has changes → use `AskUserQuestion` with `multiSelect: true`, presenting **only** the scopes that actually have changes as options. Never offer a scope that has no changes.
+    - **Staged** — changes staged for commit (the index).
+    - **Unstaged** — tracked files with unstaged modifications in the working tree.
+    - **Untracked** — files not yet tracked by git.
 - Take the **union** of the selected scopes. Only describe changes from the selected scopes.
 
 ## 2. Collect the changes
