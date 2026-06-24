@@ -62,3 +62,8 @@ Keep the roadmap focused on the points themselves. Do not add technical or imple
 ### HTML rendering
 
 When the chosen output format is HTML, render the roadmap as a self-contained document with an inline `<style>` block (no external assets), using a dark theme: a dark background with light, comfortably readable text.
+
+## 8. Summarize for the user
+
+- After writing the file, present the newly created points inline in the conversation so the user can review them at a glance — title and a short description for each. Summarize where necessary to keep it concise.
+- When extending an existing roadmap, show only the points that were just added, not the pre-existing ones.
