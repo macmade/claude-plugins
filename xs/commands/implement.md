@@ -31,7 +31,7 @@ Read the plan file, then implement the milestones one by one using the approach 
    - **First, record their feedback in that milestone's Review comments section in the plan file**, faithfully capturing what they asked, before you act on it. This is mandatory — never apply review changes without also recording them in the plan's Review comments. If the section already has entries, append to it rather than overwriting.
    - Then apply the requested changes, and update the milestone's **Implementation notes** with what changed in response.
    - Pause for review again, and repeat this step until the user is satisfied with the milestone.
-5. **Complete** — once the user is satisfied, set the milestone's **Status** to `Completed` and record its **Completed** date. Then provide the commit message (below) and pause so the user can review and commit manually before the next milestone.
+5. **Complete** — once the user is satisfied, set the milestone's **Status** to `Completed` and record its **Completed** date. Then provide the commit message (below) and stop. Do not start the next milestone yet: wait for the user to review, commit manually, and explicitly tell you to continue. Only move on to the next milestone once they have confirmed.
 
 Continue milestone by milestone until the plan is complete.
 
