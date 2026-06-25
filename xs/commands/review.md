@@ -1,5 +1,5 @@
 ---
-description: Perform a full, in-depth code review of the project, writing the findings to a Markdown or HTML file.
+description: Perform a full, in-depth code review (whole repository, uncommitted changes, or a branch comparison), reporting the findings as Markdown, HTML, or inline.
 ---
 
 Perform a full, in-depth code review of the project. Follow these steps exactly.
