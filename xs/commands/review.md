@@ -15,6 +15,7 @@ Perform a full, in-depth code review of the project. Follow these steps exactly.
   - **Uncommitted changes**: review all local changes together — the union of the staged changes (`git diff --cached`), the unstaged changes to tracked files (`git diff`), and the untracked files (`git ls-files -o --exclude-standard`), along with the context needed to understand them. Read untracked files directly, since they do not appear in `git diff`. Include only the scopes that actually contain files.
   - **Compare against a branch**: review only the changes between the current branch and a chosen base branch.
 - If **Compare against a branch** is selected, determine the base branch:
+  - First, run `git fetch` to update the remote-tracking branches so the comparison is against the current remote state. This is read-only — never run `git pull`.
   - List the available remote branches with `git branch -r` (the `origin` remote). Work with the remote branches only — never the local ones.
   - From that list, propose as quick-pick options the following, and only when they actually exist on `origin`: `origin/main`, `origin/master`, `origin/release`, `origin/hotfix`, `origin/development`. Always add an **Other branch** option as well.
   - Use `AskUserQuestion` as a **single-select** question to let the user pick the base branch.
