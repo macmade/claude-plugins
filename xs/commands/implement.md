@@ -22,12 +22,25 @@ Implement a milestone-based plan, one milestone at a time. The plan can be any M
 
 ## 3. Implement
 
-- Read the plan file. Implement each milestone one by one, using the approach chosen in step 2.
-- Before starting each milestone, ask the user to confirm with `AskUserQuestion`, giving the milestone's title and a short description of what it involves. Only begin implementing once the user confirms.
-- Pause after each milestone so the user can review and commit manually.
-- Provide a commit message. Follow Conventional Commits. Look at the previous commits (`git log`) for the types, scopes, and style actually used in this repository, and match them.
+Read the plan file, then implement the milestones one by one using the approach chosen in step 2. For each milestone, follow this cycle exactly:
+
+1. **Implement** — carry out the milestone's tasks using the chosen approach.
+2. **Record progress** — update that milestone in the plan file in place: set its **Status**, and fill in its **Implementation notes** with what was done, the decisions made, and any iterations.
+3. **Pause for review** — stop and let the user review the work. Do not move on to the next milestone yet.
+4. **Handle review feedback** — if the user asks for any changes:
+   - **First, record their feedback in that milestone's Review comments section in the plan file**, faithfully capturing what they asked, before you act on it. This is mandatory — never apply review changes without also recording them in the plan's Review comments. If the section already has entries, append to it rather than overwriting.
+   - Then apply the requested changes, and update the milestone's **Implementation notes** with what changed in response.
+   - Pause for review again, and repeat this step until the user is satisfied with the milestone.
+5. **Complete** — once the user is satisfied, set the milestone's **Status** to `Completed` and record its **Completed** date. Then provide the commit message (below) and pause so the user can review and commit manually before the next milestone.
+
+Continue milestone by milestone until the plan is complete.
+
+### Commit message
+
+When a milestone is complete, provide a commit message for it:
+
+- Follow Conventional Commits. Look at the previous commits (`git log`) for the types, scopes, and style actually used in this repository, and match them.
 - Use a concise, imperative subject line, followed by a body that describes the changes. Always include a description in the body, explaining what changed and why. Do not mention milestones in the commit message.
 - Add a co-author trailer in the standard git form `Co-Authored-By: Name <email>`, on its own line after a blank line at the end of the message, using your own model name and an Anthropic no-reply address.
-- Output the proposed commit message inside a fenced code block so it is easy to copy.
-- Update the plan file as you go, with implementation status, iterations, and review comments for each milestone.
-- When completing a milestone, also mention the date it was completed in its implementation section.
+- Output the proposed commit message inside a fenced code block so it is easy to copy. Every line of the message must start at the left margin with no indentation or leading whitespace, so it can be copied and pasted verbatim.
+- Do not stage, commit, or push anything yourself — the user reviews and commits each milestone manually.
