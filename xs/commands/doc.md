@@ -1,5 +1,5 @@
 ---
-description: Document every type and member with SwiftDoc or HeaderDoc comments, choosing the language and file kinds interactively.
+description: Document every type and member with SwiftDoc or HeaderDoc comments, choosing the language and scope interactively.
 ---
 
 Document every type and member in the chosen source files, including private and internal members. Validate existing comments and convert them to the selected style if necessary. Follow these steps exactly and do not skip the interactive prompts.
