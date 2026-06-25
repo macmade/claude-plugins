@@ -20,6 +20,7 @@ Turn a source document into a milestone-based implementation plan. The source ca
   - source `code-review.html`, HTML → `code-review-plan.html`
   - source `roadmap.md`, Markdown → `roadmap-plan.md`
   - source `docs/refactor.html`, Markdown → `docs/refactor-plan.md`
+- Never overwrite an existing file. If the derived name already exists, append the smallest integer suffix that does not collide (`code-review-plan-2.md`, `code-review-plan-3.md`, …) and write to that instead. Report the final filename used.
 - Write the plan in the chosen format.
 
 ## 3. Create the plan
