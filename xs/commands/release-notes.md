@@ -1,5 +1,5 @@
 ---
-description: Summarize the changes on the current branch versus main/master as application release notes, in Markdown, HTML, or inline.
+description: Summarize the changes on the current branch versus main/master (and selected submodules) as application release notes, in Markdown, HTML, or inline.
 ---
 
 Generate application release notes by comparing the current branch against the base branch, written as Markdown, HTML, or inline. Follow these steps exactly and do not skip the interactive prompts. Never modify the repository: do not commit, push, `git pull`, or `git submodule update`.

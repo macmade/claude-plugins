@@ -82,7 +82,7 @@ Reusable commands for XS-Labs projects.
 | `/plan`                   | Turn any source document (code review, roadmap, refactor notes, …) into a milestone-based plan.      |
 | `/roadmap`                | Build a roadmap from points entered one at a time, or extend an existing one, as Markdown or HTML.   |
 | `/implement`              | Implement a plan file milestone by milestone with TDD, pausing after each one for review and commit. |
-| `/doc`                    | Document every type and member with SwiftDoc or HeaderDoc comments, choosing the language and files. |
+| `/doc`                    | Document every type and member with SwiftDoc or HeaderDoc comments, choosing the language and scope. |
 | `/format`                 | Reformat repository sources with Xcode Format, choosing a configuration, file kinds, and git scope.  |
 | `/commit-message`         | Generate a Conventional Commits message for the current changes (staged, unstaged, untracked), without committing. |
 | `/release-notes`          | Summarize the current branch's changes versus main/master (and selected submodules) as application release notes, as Markdown, HTML, or inline. |
