@@ -25,8 +25,8 @@ Perform a full, in-depth code review of the project. Follow these steps exactly.
 ## 2. Choose the output format
 
 - Use `AskUserQuestion` as a **single-select** question to ask how the findings should be reported: **Markdown**, **HTML**, or **Inline**.
-  - **Markdown**: write the report to `code-review.md`.
-  - **HTML**: write the report to `code-review.html`.
+  - **Markdown**: write the report to `code-review.md` in the repository root.
+  - **HTML**: write the report to `code-review.html` in the repository root.
   - **Inline**: report the findings directly in the conversation, skipping file generation.
 - Never overwrite an existing file. For Markdown or HTML, if the target name already exists, append the smallest integer suffix that does not collide (`code-review-2.md`, `code-review-3.md`, …) and write to that instead. Report the final filename used.
 

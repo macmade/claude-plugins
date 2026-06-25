@@ -48,8 +48,8 @@ Generate application release notes by comparing the current branch against the b
 ## 7. Choose the output format
 
 - Use `AskUserQuestion` as a **single-select** question to ask how the release notes should be produced: **Markdown**, **HTML**, or **Inline**.
-  - **Markdown**: write the document to `release-notes.md`.
-  - **HTML**: write the document to `release-notes.html`.
+  - **Markdown**: write the document to `release-notes.md` in the repository root.
+  - **HTML**: write the document to `release-notes.html` in the repository root.
   - **Inline**: report the release notes directly in the conversation, skipping file generation.
 - Never overwrite an existing file. For Markdown or HTML, if the target name already exists, append the smallest integer suffix that does not collide (`release-notes-2.md`, `release-notes-3.md`, …) and write to that instead. Report the final filename used.
 
