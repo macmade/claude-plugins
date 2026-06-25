@@ -6,6 +6,7 @@ Document every type and member in the chosen source files, including private and
 
 ## 1. Choose the documentation style (single selection)
 
+- Before anything else, confirm the current directory is inside a Git working tree (`git rev-parse --is-inside-work-tree`); if it is not, stop and tell the user this command only works inside a Git repository.
 - Use `AskUserQuestion` as a **single-select** question to let the user pick one of:
   - **Swift (SwiftDoc)** — Swift files documented with SwiftDoc comments.
   - **C / C++ / Objective-C (HeaderDoc)** — C-family files documented with HeaderDoc comments.
@@ -26,12 +27,12 @@ Document every type and member in the chosen source files, including private and
 ## 3. Collect the files
 
 - Work from the repository root (`git rev-parse --show-toplevel`).
-- For each selected scope, gather the corresponding files. All commands below exclude submodules and gitignored files by construction, and `--diff-filter=d` drops deleted paths so no missing file is processed:
-  - **All files** → `git ls-files` and `git ls-files -o --exclude-standard`
-  - **Staged** → `git diff --cached --name-only --diff-filter=d`
-  - **Unstaged** → `git diff --name-only --diff-filter=d`
-  - **Untracked** → `git ls-files -o --exclude-standard`
-- Combine the lists for every selected scope, deduplicate, and keep only files whose extension is in the set chosen in step 1.
+- For each selected scope, gather the corresponding files. Use NUL-delimited output (`-z`) everywhere so paths containing spaces or newlines survive intact; split the lists on NUL when reading them back. All commands below exclude submodules and gitignored files by construction, and `--diff-filter=d` drops deleted paths so no missing file is processed:
+  - **All files** → `git ls-files -z` and `git ls-files -z -o --exclude-standard`
+  - **Staged** → `git diff --cached --name-only -z --diff-filter=d`
+  - **Unstaged** → `git diff --name-only -z --diff-filter=d`
+  - **Untracked** → `git ls-files -z -o --exclude-standard`
+- Combine the NUL-delimited lists for every selected scope, deduplicate, and keep only files whose extension is in the set chosen in step 1.
 - Report how many files matched. If none match, stop and say so.
 
 ## 4. Document the code

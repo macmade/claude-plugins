@@ -37,7 +37,7 @@ Generate a project roadmap from points entered one at a time, written to a Markd
 
 - Only when creating a new roadmap (when extending, reuse the existing file and format from step 1).
 - Use `AskUserQuestion` as a **single-select** question to ask whether the roadmap should be written in **Markdown** or **HTML**.
-- Derive the filename from the title: lowercase it, replace any run of non-alphanumeric characters with a single hyphen, and trim leading/trailing hyphens. Use the extension `md` or `html` per the chosen format. Write it in the current directory.
+- Derive the filename from the title: lowercase it, replace any run of non-alphanumeric characters with a single hyphen, and trim leading/trailing hyphens. Use the extension `md` or `html` per the chosen format. Write it to the repository root (`git rev-parse --show-toplevel`) when inside a Git repository; otherwise write it in the current directory.
   - title `Project Phoenix`, Markdown → `project-phoenix.md`
   - title `Q3 2026 Roadmap`, HTML → `q3-2026-roadmap.html`
 - Never overwrite an existing file. If the derived name already exists, append the smallest integer suffix that does not collide (`project-phoenix-2.md`, `project-phoenix-3.md`, …) and write to that instead. Report the final filename used.

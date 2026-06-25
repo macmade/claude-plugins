@@ -6,6 +6,7 @@ Reformat source files in the current repository using **Xcode Format**. Follow t
 
 ## 1. Preflight
 
+- This command only works inside a Git repository. Confirm the current directory is inside a Git working tree (`git rev-parse --is-inside-work-tree`); if it is not, stop and tell the user.
 - This only works on macOS. If `uname -s` is not `Darwin`, stop and tell the user.
 - The formatter lives at `/Applications/Xcode Format.app/Contents/MacOS/Xcode Format`. If that file is not executable, stop and tell the user the tool is not installed.
 
@@ -39,12 +40,12 @@ Reformat source files in the current repository using **Xcode Format**. Follow t
 ## 5. Collect the files
 
 - Work from the repository root (`git rev-parse --show-toplevel`).
-- For each selected scope, gather the corresponding files. All commands below exclude submodules and gitignored files by construction, and `--diff-filter=d` drops deleted paths so the formatter never runs on a file that no longer exists:
-  - **All files** → `git ls-files` and `git ls-files -o --exclude-standard`
-  - **Staged** → `git diff --cached --name-only --diff-filter=d`
-  - **Unstaged** → `git diff --name-only --diff-filter=d`
-  - **Untracked** → `git ls-files -o --exclude-standard`
-- Combine the lists for every selected scope, deduplicate, and keep only files whose extension is in the set chosen in step 3.
+- For each selected scope, gather the corresponding files. Use NUL-delimited output (`-z`) everywhere so paths containing spaces or newlines survive intact and feed `xargs -0` safely in step 6. All commands below exclude submodules and gitignored files by construction, and `--diff-filter=d` drops deleted paths so the formatter never runs on a file that no longer exists:
+  - **All files** → `git ls-files -z` and `git ls-files -z -o --exclude-standard`
+  - **Staged** → `git diff --cached --name-only -z --diff-filter=d`
+  - **Unstaged** → `git diff --name-only -z --diff-filter=d`
+  - **Untracked** → `git ls-files -z -o --exclude-standard`
+- Combine the NUL-delimited lists for every selected scope, deduplicate, and keep only files whose extension is in the set chosen in step 3.
 
 ## 6. Confirm and format
 

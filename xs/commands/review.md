@@ -6,6 +6,7 @@ Perform a full, in-depth code review of the project. Follow these steps exactly.
 
 ## 1. Choose the review scope
 
+- Before anything else, confirm the current directory is inside a Git working tree (`git rev-parse --is-inside-work-tree`); if it is not, stop and tell the user this command only works inside a Git repository.
 - First, from the repository root, detect which change scopes actually contain files:
   - **Staged** — `git diff --cached --name-only` returns at least one file.
   - **Unstaged** — `git diff --name-only` returns at least one file.

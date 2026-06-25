@@ -6,6 +6,7 @@ Generate a commit message describing the current changes in the repository. Only
 
 ## 1. Choose the change scope (multiple selection)
 
+- Before anything else, confirm the current directory is inside a Git working tree (`git rev-parse --is-inside-work-tree`); if it is not, stop and tell the user this command only works inside a Git repository.
 - First, from the repository root, detect which scopes actually contain changes:
   - **Staged** — `git diff --cached --name-only` returns at least one file.
   - **Unstaged** — `git diff --name-only` returns at least one file.
