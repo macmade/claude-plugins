@@ -28,7 +28,8 @@ Reformat source files in the current repository using **Xcode Format**. Follow t
 
 ## 4. Choose the file scope (multiple selection)
 
-- Use `AskUserQuestion` with `multiSelect: true` so the user can pick one scope or any combination of scopes:
+- First, detect which change-based scopes actually contain files: **Staged** (`git diff --cached --name-only`), **Unstaged** (`git diff --name-only`), **Untracked** (`git ls-files -o --exclude-standard`).
+- Use `AskUserQuestion` with `multiSelect: true` so the user can pick one scope or any combination of scopes. Always offer **All files** (it does not depend on local changes), and among the change-based scopes offer **only** those detected above — never present a change-based scope that has no files:
   - **All files** — every tracked and untracked file in the repository.
   - **Staged** — files staged for commit (the index).
   - **Unstaged** — tracked files with unstaged modifications in the working tree.
