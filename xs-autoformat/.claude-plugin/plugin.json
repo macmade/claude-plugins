@@ -1,6 +1,5 @@
 {
   "name": "xs-autoformat",
-  "version": "1.0.0",
   "description": "Automatic Xcode Format hook for XS-Labs projects, intended for per-repository use.",
   "author": {
     "name": "macmade"
