@@ -40,6 +40,7 @@ Generate a project roadmap from points entered one at a time, written to a Markd
 - Derive the filename from the title: lowercase it, replace any run of non-alphanumeric characters with a single hyphen, and trim leading/trailing hyphens. Use the extension `md` or `html` per the chosen format. Write it in the current directory.
   - title `Project Phoenix`, Markdown → `project-phoenix.md`
   - title `Q3 2026 Roadmap`, HTML → `q3-2026-roadmap.html`
+- Never overwrite an existing file. If the derived name already exists, append the smallest integer suffix that does not collide (`project-phoenix-2.md`, `project-phoenix-3.md`, …) and write to that instead. Report the final filename used.
 
 ## 6. Write the roadmap
 
