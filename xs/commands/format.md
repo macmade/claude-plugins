@@ -43,7 +43,7 @@ Reformat source files in the current repository using **Xcode Format**. Follow t
   - **Staged** → `git diff --cached --name-only --diff-filter=d`
   - **Unstaged** → `git diff --name-only --diff-filter=d`
   - **Untracked** → `git ls-files -o --exclude-standard`
-- Combine the lists for every selected scope, deduplicate, and keep only files whose extension is in the set chosen in step 3. These commands never descend into submodules, so submodule contents are excluded by construction.
+- Combine the lists for every selected scope, deduplicate, and keep only files whose extension is in the set chosen in step 3.
 
 ## 6. Confirm and format
 

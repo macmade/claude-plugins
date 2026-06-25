@@ -30,7 +30,7 @@ Document every type and member in the chosen source files, including private and
   - **Staged** → `git diff --cached --name-only --diff-filter=d`
   - **Unstaged** → `git diff --name-only --diff-filter=d`
   - **Untracked** → `git ls-files -o --exclude-standard`
-- Combine the lists for every selected scope, deduplicate, and keep only files whose extension is in the set chosen in step 1. These commands never descend into submodules, so submodule contents are excluded by construction.
+- Combine the lists for every selected scope, deduplicate, and keep only files whose extension is in the set chosen in step 1.
 - Report how many files matched. If none match, stop and say so.
 
 ## 4. Document the code
