@@ -10,6 +10,7 @@ Turn a source document into a milestone-based implementation plan. The source ca
 - If a filename was provided as an argument (`$ARGUMENTS`), use it as the source document.
 - Otherwise, find candidate documents in the repository and ask the user which one to use. This fallback needs a Git repository — if the current directory is not inside a Git working tree (`git rev-parse --is-inside-work-tree`), stop and ask the user to pass a source file as an argument instead:
   - List `*.md` and `*.html` files (e.g. `git ls-files '*.md' '*.html'` plus untracked ones via `git ls-files -o --exclude-standard '*.md' '*.html'`), excluding files that already look like plans (names ending in `-plan.md` / `-plan.html`) and the project's `README.md`.
+  - If a `Docs/agent-plans` directory exists at the repository root, favor the candidates found under it: list those first and mark them as recommended, but keep listing the candidates found elsewhere too.
   - Present them with `AskUserQuestion` as a **single-select** question. If no candidates exist, stop and tell the user.
 - If the chosen file does not exist, stop and say so.
 

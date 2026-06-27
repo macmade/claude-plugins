@@ -23,13 +23,23 @@ Perform a full, in-depth code review of the project. Follow these steps exactly.
   - If the user picks **Other branch**, present a second `AskUserQuestion` single-select listing all available remote branches from `git branch -r` (excluding `origin/HEAD` and the remote-tracking branch for the current branch) so the user can choose any one.
   - Review only the changes reported by `git diff <base-branch>...HEAD`, along with the context needed to understand them.
 
-## 2. Choose the output format
+## 2. Choose the output format and location
 
 - Use `AskUserQuestion` as a **single-select** question to ask how the findings should be reported: **Markdown**, **HTML**, or **Inline**.
-  - **Markdown**: write the report to `code-review.md` in the repository root.
-  - **HTML**: write the report to `code-review.html` in the repository root.
+  - **Markdown**: write the report as a Markdown file.
+  - **HTML**: write the report as an HTML file.
   - **Inline**: report the findings directly in the conversation, skipping file generation.
-- Never overwrite an existing file. For Markdown or HTML, if the target name already exists, append the smallest integer suffix that does not collide (`code-review-2.md`, `code-review-3.md`, …) and write to that instead. Report the final filename used.
+- **Choose the location** — only when writing to a file (Markdown or HTML); skip this entirely for Inline. Use `AskUserQuestion` as a **single-select** question to ask where to write the report, offering exactly these two options (always include both, whether or not `Docs/agent-plans` already exists):
+  - **Repository root** — write directly to the repository root.
+  - **Docs/agent-plans** — write into a dated subfolder of `Docs/agent-plans`, creating the `Docs/agent-plans` directory (and the subfolder) if it does not already exist.
+  - This location question and the format question above may be asked together in a single `AskUserQuestion` call.
+- **Derive the path** from the chosen format and location, using the base name `code-review` and the extension `md` or `html` per the chosen format:
+  - **Repository root:** write `code-review.<ext>` directly in the repository root (e.g. `code-review.md`, `code-review.html`).
+  - **Docs/agent-plans:** create a subfolder named `<YYYY-MM-DD>-code-review` (using today's date) and write the file as `code-review.<ext>` inside it (e.g. `Docs/agent-plans/2026-05-17-code-review/code-review.md`).
+- Never overwrite an existing file. Append the smallest integer suffix that does not collide, applied to whichever part of the path keeps reports from clashing:
+  - **Repository root:** suffix the filename (`code-review-2.md`, `code-review-3.md`, …).
+  - **Docs/agent-plans:** suffix the dated subfolder, keeping the filename inside it unchanged (`Docs/agent-plans/2026-05-17-code-review-2/code-review.md`, …).
+  - Report the final path used.
 
 ## 3. Perform the review
 
@@ -38,11 +48,11 @@ Perform a full, in-depth code review of the project. Follow these steps exactly.
 - Back up your claims.
 - Focus on everything, including architecture, API, performance, security, stability, crashes, undefined behavior, etc.
 - When reviewing changes (uncommitted changes or a branch comparison), explicitly check for **regressions**: behavior, APIs, or guarantees that previously worked and are now altered, removed, or broken — including impacts on existing callers and tests.
-- Report your findings using the template in the next step, in the chosen format: at the derived filename for Markdown or HTML, or directly in the conversation for Inline.
+- Report your findings using the template in the next step, in the chosen format: at the derived path for Markdown or HTML, or directly in the conversation for Inline.
 
 ## 4. Report template
 
-Every report has the same structure regardless of the output format chosen in step 2. The template below defines the **content** the report must contain — not its formatting. Render each item idiomatically in the chosen format (Markdown or HTML written to the derived file, or presented directly in the conversation for Inline), and replace every `<...>` placeholder.
+Every report has the same structure regardless of the output format chosen in step 2. The template below defines the **content** the report must contain — not its formatting. Render each item idiomatically in the chosen format (Markdown or HTML written to the derived path, or presented directly in the conversation for Inline), and replace every `<...>` placeholder.
 
 - **Title** — `<project name> — Code Review`
 - **Generated** — `<YYYY-MM-DD>`
