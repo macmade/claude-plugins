@@ -85,7 +85,7 @@ Reusable commands for XS-Labs projects.
 | `/doc`                    | Document every type and member with SwiftDoc or HeaderDoc comments, choosing the language and scope. |
 | `/format`                 | Reformat repository sources with Xcode Format, choosing a configuration, file kinds, and git scope.  |
 | `/commit-message`         | Generate a Conventional Commits message for the current changes (staged, unstaged, untracked), without committing. |
-| `/release-notes`          | Summarize the current branch's changes versus main/master (and selected submodules) as application release notes, as Markdown, HTML, or inline. |
+| `/changes`                | Summarize the current branch's changes versus main/master (and selected submodules), as Markdown, HTML, or inline. |
 
 #### `xs-autoformat`
 

@@ -1,8 +1,8 @@
 ---
-description: Summarize the changes on the current branch versus main/master (and selected submodules) as application release notes, in Markdown, HTML, or inline.
+description: Summarize the changes on the current branch versus main/master (and selected submodules), in Markdown, HTML, or inline.
 ---
 
-Generate application release notes by comparing the current branch against the base branch, written as Markdown, HTML, or inline. Follow these steps exactly and do not skip the interactive prompts. Never modify the repository: do not commit, push, `git pull`, or `git submodule update`.
+Generate a summary of the changes by comparing the current branch against the base branch, written as Markdown, HTML, or inline. Follow these steps exactly and do not skip the interactive prompts. Never modify the repository: do not commit, push, `git pull`, or `git submodule update`.
 
 ## 1. Require a Git repository
 
@@ -40,27 +40,27 @@ Generate application release notes by comparing the current branch against the b
 
 ## 6. Group and summarize
 
-- Group the changes into release-note categories suitable for an application's release notes, for example: **New Features**, **Improvements**, **Bug Fixes**, **Performance**, **Security**, **Other**. Use only the categories that actually have entries; omit empty ones.
-- Write every entry as a **bullet point** in clear, user-facing language describing the value or effect of the change — not internal implementation detail. The release notes must consist of bullet points only.
+- Group the changes into categories suitable for a change summary, for example: **New Features**, **Improvements**, **Bug Fixes**, **Performance**, **Security**, **Other**. Use only the categories that actually have entries; omit empty ones.
+- Write every entry as a **bullet point** in clear, user-facing language describing the value or effect of the change — not internal implementation detail. The summary must consist of bullet points only.
 - Merge related commits into a single bullet where that reads better; omit purely internal noise (e.g. formatting-only or chore commits) unless it is user-relevant.
 - For each selected submodule that changed, present its bullets in its own grouped subsection, labeled with the submodule name, using the same categories.
 
 ## 7. Choose the output format
 
-- Use `AskUserQuestion` as a **single-select** question to ask how the release notes should be produced: **Markdown**, **HTML**, or **Inline**.
-  - **Markdown**: write the document to `release-notes.md` in the repository root.
-  - **HTML**: write the document to `release-notes.html` in the repository root.
-  - **Inline**: report the release notes directly in the conversation, skipping file generation.
-- Never overwrite an existing file. For Markdown or HTML, if the target name already exists, append the smallest integer suffix that does not collide (`release-notes-2.md`, `release-notes-3.md`, …) and write to that instead. Report the final filename used.
+- Use `AskUserQuestion` as a **single-select** question to ask how the summary should be produced: **Markdown**, **HTML**, or **Inline**.
+  - **Markdown**: write the document to `changes.md` in the repository root.
+  - **HTML**: write the document to `changes.html` in the repository root.
+  - **Inline**: report the changes directly in the conversation, skipping file generation.
+- Never overwrite an existing file. For Markdown or HTML, if the target name already exists, append the smallest integer suffix that does not collide (`changes-2.md`, `changes-3.md`, …) and write to that instead. Report the final filename used.
 
 ## 8. Document structure
 
 Every document has the same structure regardless of the output format chosen in step 7. The template below defines the **content** the document must contain — not its formatting. Render each item idiomatically in the chosen format (Markdown or HTML written to the derived file, or presented directly in the conversation for Inline), and replace every `<...>` placeholder.
 
-- **Title** — `<project name> — Release Notes`
+- **Title** — `<project name> — Changes`
 - **Generated** — `<YYYY-MM-DD>`
 - **Branches** — the comparison: `<current branch>` compared against `origin/<base>`. When submodules were included, also list each covered submodule and its pointer range (`<old short SHA>..<new short SHA>`).
-- **Release notes** — the grouped bullet points for the top-level repository, by category (only non-empty categories).
+- **Changes** — the grouped bullet points for the top-level repository, by category (only non-empty categories).
 - **Submodules** — for each selected submodule that changed, a subsection titled with the submodule name, containing its grouped bullet points by category. Omit this section entirely if no submodules were covered or none changed.
 
 If there are no user-relevant changes within the scope, say so clearly instead of inventing entries.
