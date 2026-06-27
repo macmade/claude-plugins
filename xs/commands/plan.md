@@ -27,7 +27,7 @@ Turn a source document into a milestone-based implementation plan. The source ca
 ## 3. Create the plan
 
 - Read and understand the source document fully.
-- Ask the user any clarifying questions needed before planning, and record every question you asked together with the user's answer in the plan's Questions & answers section (see the template).
+- Ask the user any clarifying questions needed before planning, and record every question you asked together with the user's answer in the plan's Questions & answers section (see the template). Record only questions about the plan's content; never record the mechanical questions from steps 1 and 2 (which source file to use, the output format, or the plan's filename and location).
 - If the project uses submodules and you think a change is needed in one of them to improve the implementation, ask the user. Changes to submodules may be acceptable, but the user decides on a case-by-case basis.
 - Split the plan into small, meaningful milestones that can be reviewed and committed individually, and write it to the derived plan file.
 - Write the plan as a living document: give each milestone a clear place to record implementation status, iterations, and review comments, since the implement command updates the plan in place as work progresses.
@@ -42,7 +42,7 @@ Every plan has the same structure regardless of the output format chosen in step
 - **Generated** — `<YYYY-MM-DD>`
 - **Source** — `<path to the source document>`
 - **Overview** — `<one or two paragraphs: the goal of this plan and the overall approach>`
-- **Questions & answers** — every clarifying question you asked while building the plan, each paired with the user's answer. Omit the section only if no questions were asked.
+- **Questions & answers** — every clarifying question you asked about the plan's content, each paired with the user's answer. Exclude the mechanical questions from steps 1 and 2 (which source file to use, the chosen output format, and the plan's filename and location) — these belong to the planning process, not the plan. Omit the section only if no content questions were asked.
 - **Notes** — an optional, free-form section between the overview and the milestones for anything you find useful to capture before diving into the milestones: relevant context, key files or components, conventions to follow, assumptions, open questions, risks, or references. Include only what is genuinely helpful; omit the section if there is nothing worth recording.
 - **Milestones** — one entry per milestone, repeated as many times as the work requires. For large plans, group related milestones under named phases when it makes the plan clearer; otherwise list the milestones directly. Each milestone contains:
   - **Title** — `<short milestone title>`
