@@ -17,7 +17,7 @@ Generate a project roadmap from points entered one at a time, written to a Markd
 ## 2. Choose the roadmap title
 
 - Only when creating a new roadmap (no argument was provided).
-- Ask the user for the roadmap title. Use this title for the document and to derive the filename in step 5.
+- Ask the user for the roadmap title. Use this title for the document and to derive the roadmap path in step 5.
 
 ## 3. Collect the roadmap points
 
@@ -33,18 +33,30 @@ Generate a project roadmap from points entered one at a time, written to a Markd
 - When extending an existing roadmap, also read its existing points so the new ones are consistent with what is already there and not redundant.
 - If you are not inside a repository, skip the repository analysis but still ask clarifying questions if a point is ambiguous.
 
-## 5. Choose the output format and derive the roadmap filename
+## 5. Choose the output format and derive the roadmap path
 
 - Only when creating a new roadmap (when extending, reuse the existing file and format from step 1).
 - Use `AskUserQuestion` as a **single-select** question to ask whether the roadmap should be written in **Markdown** or **HTML**.
-- Derive the filename from the title: lowercase it, replace any run of non-alphanumeric characters with a single hyphen, and trim leading/trailing hyphens. Use the extension `md` or `html` per the chosen format. Write it to the repository root (`git rev-parse --show-toplevel`) when inside a Git repository; otherwise write it in the current directory.
-  - title `Project Phoenix`, Markdown → `project-phoenix.md`
-  - title `Q3 2026 Roadmap`, HTML → `q3-2026-roadmap.html`
-- Never overwrite an existing file. If the derived name already exists, append the smallest integer suffix that does not collide (`project-phoenix-2.md`, `project-phoenix-3.md`, …) and write to that instead. Report the final filename used.
+- **Choose the location.** When inside a Git repository, determine the repository root (`git rev-parse --show-toplevel`) and use `AskUserQuestion` as a **single-select** question to ask where to write the roadmap, offering exactly these two options (always include both, whether or not `Docs/agent-plans` already exists):
+  - **Repository root** — write directly to the repository root.
+  - **Docs/agent-plans** — write into a dated subfolder of `Docs/agent-plans`, creating the `Docs/agent-plans` directory (and the subfolder) if it does not already exist.
+  - When not inside a Git repository, do not ask: use the current directory.
+  - This location question and the Markdown/HTML question above may be asked together in a single `AskUserQuestion` call.
+- **Derive the slug** from the title: lowercase it, replace any run of non-alphanumeric characters with a single hyphen, and trim leading/trailing hyphens. Use the extension `md` or `html` per the chosen format.
+- **Derive the path** from the chosen location:
+  - **Repository root / current directory:** write `<slug>.<ext>` directly in that directory.
+    - title `Project Phoenix`, Markdown → `project-phoenix.md`
+    - title `Q3 2026 Roadmap`, HTML → `q3-2026-roadmap.html`
+  - **Docs/agent-plans:** create a subfolder named `<YYYY-MM-DD>-<slug>` (using today's date) and write the file as `<slug>.<ext>` inside it.
+    - title `Some Feature`, Markdown, on 2026-05-17 → `Docs/agent-plans/2026-05-17-some-feature/some-feature.md`
+- Never overwrite an existing file. Append the smallest integer suffix that does not collide, applied to whichever part of the path keeps roadmaps from clashing:
+  - **Repository root / current directory:** suffix the filename (`project-phoenix-2.md`, `project-phoenix-3.md`, …).
+  - **Docs/agent-plans:** suffix the dated subfolder, keeping the filename inside it unchanged (`Docs/agent-plans/2026-05-17-some-feature-2/some-feature.md`, …).
+  - Report the final path used.
 
 ## 6. Write the roadmap
 
-- When creating a new roadmap, structure it using the template in the next step, rendering it idiomatically in the chosen output format, and write it to the derived filename.
+- When creating a new roadmap, structure it using the template in the next step, rendering it idiomatically in the chosen output format, and write it to the derived path.
 - When extending an existing roadmap, append the new points to the existing document, matching its existing structure and formatting rather than imposing the template. Keep all existing points unchanged, add the new ones in the same style, and update the document's generated/updated date if it has one.
 
 ## 7. Roadmap template
