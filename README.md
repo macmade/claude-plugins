@@ -86,6 +86,7 @@ Reusable commands for XS-Labs projects.
 | `/format`                 | Reformat repository sources with Xcode Format, choosing a configuration, file kinds, and git scope.  |
 | `/commit-message`         | Generate a Conventional Commits message for the current changes (staged, unstaged, untracked), without committing. |
 | `/changes`                | Summarize the current branch's changes versus main/master (and selected submodules), as Markdown, HTML, or inline. |
+| `/release-notes`          | Summarize the changes since the last release tag as GitHub-ready release notes, as Markdown or inline. |
 
 #### `xs-autoformat`
 
