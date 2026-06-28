@@ -26,14 +26,15 @@ Implement a milestone-based plan, one milestone at a time. The plan can be any M
 
 Read the plan file, then implement the milestones one by one using the approach chosen in step 2. For each milestone, follow this cycle exactly:
 
-1. **Implement** — carry out the milestone's tasks using the chosen approach.
-2. **Record progress** — update that milestone in the plan file in place: set its **Status**, and fill in its **Implementation notes** with what was done, the decisions made, and any iterations.
-3. **Pause for review** — stop and let the user review the work. Do not move on to the next milestone yet.
-4. **Handle review feedback** — if the user asks for any changes:
+1. **Review past feedback** — before implementing, re-read the **Review comments** and **Implementation notes** of the milestones already marked `Completed` in the plan file. Extract any guidance that generalizes beyond the milestone it was recorded in — recurring corrections, conventions the user enforced, decisions about structure or style — and apply it to this milestone so you do not reproduce issues that were already addressed. Skip feedback that was purely specific to a past milestone and does not apply here. For the first milestone, there is nothing to review yet.
+2. **Implement** — carry out the milestone's tasks using the chosen approach.
+3. **Record progress** — update that milestone in the plan file in place: set its **Status**, and fill in its **Implementation notes** with what was done, the decisions made, and any iterations.
+4. **Pause for review** — stop and let the user review the work. Do not move on to the next milestone yet.
+5. **Handle review feedback** — if the user asks for any changes:
    - **First, record their feedback in that milestone's Review comments section in the plan file**, faithfully capturing what they asked, before you act on it. This is mandatory — never apply review changes without also recording them in the plan's Review comments. If the section already has entries, append to it rather than overwriting.
    - Then apply the requested changes, and update the milestone's **Implementation notes** with what changed in response.
    - Pause for review again, and repeat this step until the user is satisfied with the milestone.
-5. **Complete** — once the user is satisfied, set the milestone's **Status** to `Completed` and record its **Completed** date. Then provide the commit message (below) and stop. Do not start the next milestone yet: wait for the user to review, commit manually, and explicitly tell you to continue. Only move on to the next milestone once they have confirmed.
+6. **Complete** — once the user is satisfied, set the milestone's **Status** to `Completed` and record its **Completed** date. Then provide the commit message (below) and stop. Do not start the next milestone yet: wait for the user to review, commit manually, and explicitly tell you to continue. Only move on to the next milestone once they have confirmed.
 
 Continue milestone by milestone until the plan is complete.
 
