@@ -29,16 +29,16 @@ Perform a full, in-depth code review of the project. Follow these steps exactly.
   - **Markdown**: write the report as a Markdown file.
   - **HTML**: write the report as an HTML file.
   - **Inline**: report the findings directly in the conversation, skipping file generation.
-- **Choose the location** — only when writing to a file (Markdown or HTML); skip this entirely for Inline. Use `AskUserQuestion` as a **single-select** question to ask where to write the report, offering exactly these two options (always include both, whether or not `Docs/agent-plans` already exists):
+- **Choose the location** — only when writing to a file (Markdown or HTML); skip this entirely for Inline. Use `AskUserQuestion` as a **single-select** question to ask where to write the report, offering exactly these two options (always include both, whether or not `Docs/agent-plans/active` already exists):
   - **Repository root** — write directly to the repository root.
-  - **Docs/agent-plans** — write into a dated subfolder of `Docs/agent-plans`, creating the `Docs/agent-plans` directory (and the subfolder) if it does not already exist.
+  - **Docs/agent-plans** — write into a dated subfolder of `Docs/agent-plans/active`, creating the `Docs/agent-plans/active` directory (and the subfolder) if it does not already exist.
   - This location question and the format question above may be asked together in a single `AskUserQuestion` call.
 - **Derive the path** from the chosen format and location, using the base name `code-review` and the extension `md` or `html` per the chosen format:
   - **Repository root:** write `code-review.<ext>` directly in the repository root (e.g. `code-review.md`, `code-review.html`).
-  - **Docs/agent-plans:** create a subfolder named `<YYYY-MM-DD>-code-review` (using today's date) and write the file as `code-review.<ext>` inside it (e.g. `Docs/agent-plans/2026-05-17-code-review/code-review.md`).
+  - **Docs/agent-plans:** create a subfolder named `<YYYY-MM-DD>-code-review` (using today's date) under `Docs/agent-plans/active` and write the file as `code-review.<ext>` inside it (e.g. `Docs/agent-plans/active/2026-05-17-code-review/code-review.md`).
 - Never overwrite an existing file. Append the smallest integer suffix that does not collide, applied to whichever part of the path keeps reports from clashing:
   - **Repository root:** suffix the filename (`code-review-2.md`, `code-review-3.md`, …).
-  - **Docs/agent-plans:** suffix the dated subfolder, keeping the filename inside it unchanged (`Docs/agent-plans/2026-05-17-code-review-2/code-review.md`, …).
+  - **Docs/agent-plans:** suffix the dated subfolder, keeping the filename inside it unchanged (`Docs/agent-plans/active/2026-05-17-code-review-2/code-review.md`, …).
   - Report the final path used.
 
 ## 3. Perform the review
