@@ -1,9 +1,9 @@
 ---
-description: Turn a source document (code review, roadmap, refactor notes, etc.) into a milestone-based implementation plan.
+description: Turn a source document (code review, backlog, refactor notes, etc.) into a milestone-based implementation plan.
 argument-hint: "[source-file]"
 ---
 
-Turn a source document into a milestone-based implementation plan. The source can be any Markdown or HTML document — a code review, a roadmap, refactor notes, a design doc, etc. Follow these steps exactly.
+Turn a source document into a milestone-based implementation plan. The source can be any Markdown or HTML document — a code review, a backlog, refactor notes, a design doc, etc. Follow these steps exactly.
 
 ## 1. Determine the source file
 
@@ -11,7 +11,7 @@ Turn a source document into a milestone-based implementation plan. The source ca
 - Otherwise, find candidate documents in the repository and ask the user which one to use. This fallback needs a Git repository — if the current directory is not inside a Git working tree (`git rev-parse --is-inside-work-tree`), stop and ask the user to pass a source file as an argument instead:
   - List `*.md` and `*.html` files (e.g. `git ls-files '*.md' '*.html'` plus untracked ones via `git ls-files -o --exclude-standard '*.md' '*.html'`), then exclude:
     - files that already look like plans (names ending in `-plan.md` / `-plan.html`);
-    - source files that already have an associated plan (e.g. exclude `roadmap.md` when `roadmap-plan.md` or `roadmap-plan.html` exists alongside it);
+    - source files that already have an associated plan (e.g. exclude `backlog.md` when `backlog-plan.md` or `backlog-plan.html` exists alongside it);
     - standard repository boilerplate (README, LICENSE / COPYING, CODE_OF_CONDUCT, CONTRIBUTING, CHANGELOG, SECURITY, and similar conventional project files, regardless of extension or directory).
   - If a `Docs/agent-plans/active` directory exists at the repository root, favor the candidates found under it: list those first and mark them as recommended, but keep listing the candidates found elsewhere too. Never list candidates under `Docs/agent-plans/completed` — those belong to finished initiatives that have been archived.
   - Present them with `AskUserQuestion` as a **single-select** question. If no candidates exist, stop and tell the user.
@@ -22,7 +22,7 @@ Turn a source document into a milestone-based implementation plan. The source ca
 - Use `AskUserQuestion` as a **single-select** question to ask whether the plan should be written in **Markdown** or **HTML**. Default the recommendation to the source's own format.
 - Build the output name from the source, keeping its directory: `<base>-plan.<ext>`, where `<ext>` is `md` or `html` per the chosen format.
   - source `code-review.html`, HTML → `code-review-plan.html`
-  - source `roadmap.md`, Markdown → `roadmap-plan.md`
+  - source `backlog.md`, Markdown → `backlog-plan.md`
   - source `docs/refactor.html`, Markdown → `docs/refactor-plan.md`
 - Never overwrite an existing file. If the derived name already exists, append the smallest integer suffix that does not collide (`code-review-plan-2.md`, `code-review-plan-3.md`, …) and write to that instead. Report the final filename used.
 - Write the plan in the chosen format.
