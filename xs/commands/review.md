@@ -23,7 +23,13 @@ Perform a full, in-depth code review of the project. Follow these steps exactly.
   - If the user picks **Other branch**, present a second `AskUserQuestion` single-select listing all available remote branches from `git branch -r` (excluding `origin/HEAD` and the remote-tracking branch for the current branch) so the user can choose any one.
   - Review only the changes reported by `git diff <base-branch>...HEAD`, along with the context needed to understand them.
 
-## 2. Choose the output format and location
+## 2. Provide additional review context
+
+- After the scope is settled, ask the user — as a plain, free-form text prompt, **not** an `AskUserQuestion` — whether they want to provide any additional context to guide the review. Make clear it is optional and can be left empty to skip.
+- This is free text: the user may describe focus areas, known concerns, things to pay special attention to, areas to ignore, relevant background, conventions to respect, or anything else that should shape the review.
+- If the user provides context, carry it through and let it guide the review in step 4 — prioritizing what they flagged — without narrowing the review to only those points unless they explicitly ask for that. If the user leaves it empty, proceed normally.
+
+## 3. Choose the output format and location
 
 - Use `AskUserQuestion` as a **single-select** question to ask how the findings should be reported: **Markdown**, **HTML**, or **Inline**.
   - **Markdown**: write the report as a Markdown file.
@@ -41,18 +47,19 @@ Perform a full, in-depth code review of the project. Follow these steps exactly.
   - **Docs/agent-plans:** suffix the dated subfolder, keeping the filename inside it unchanged (`Docs/agent-plans/active/2026-05-17-code-review-2/code-review.md`, …).
   - Report the final path used.
 
-## 3. Perform the review
+## 4. Perform the review
 
 - Perform a complete, in-depth review within the chosen scope. Make sure to read the relevant source code and do not assume anything.
+- Take into account any additional context the user provided in step 2, letting it guide and prioritize the review.
 - Read the Git history, if necessary or in doubt, to understand why certain decisions were made.
 - Back up your claims.
 - Focus on everything, including architecture, API, performance, security, stability, crashes, undefined behavior, etc.
 - When reviewing changes (uncommitted changes or a branch comparison), explicitly check for **regressions**: behavior, APIs, or guarantees that previously worked and are now altered, removed, or broken — including impacts on existing callers and tests.
 - Report your findings using the template in the next step, in the chosen format: at the derived path for Markdown or HTML, or directly in the conversation for Inline.
 
-## 4. Report template
+## 5. Report template
 
-Every report has the same structure regardless of the output format chosen in step 2. The template below defines the **content** the report must contain — not its formatting. Render each item idiomatically in the chosen format (Markdown or HTML written to the derived path, or presented directly in the conversation for Inline), and replace every `<...>` placeholder.
+Every report has the same structure regardless of the output format chosen in step 3. The template below defines the **content** the report must contain — not its formatting. Render each item idiomatically in the chosen format (Markdown or HTML written to the derived path, or presented directly in the conversation for Inline), and replace every `<...>` placeholder.
 
 - **Title** — `<project name> — Code Review`
 - **Generated** — `<YYYY-MM-DD>`
