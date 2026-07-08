@@ -54,10 +54,11 @@ Every plan has the same structure regardless of the output format chosen in step
   - **Status** — one of: `Not started`, `In progress`, `Completed`
   - **Completed** — `<the date it was completed, once done; otherwise left blank>`
   - **Implementation notes** — filled in as work progresses: what was done, decisions made, iterations
-  - **Review comments** — review feedback for this milestone
+  - **Automated review** — findings from the automated review loop run during implementation (kept separate from human review feedback)
+  - **Review comments** — human review feedback for this milestone
 - **Appendix** — an optional, free-form section at the very end for supporting material that does not belong to a single milestone: detailed examples, diagrams, data, references, or any extra detail worth keeping out of the main flow. Include only what is genuinely helpful; omit the section if there is nothing worth recording.
 
-Keep the per-milestone Status, Completed, Implementation notes, and Review comments fields so the implement command can update them in place.
+Keep the per-milestone Status, Completed, Implementation notes, Automated review, and Review comments fields so the implement command can update them in place.
 
 ### HTML rendering
 
