@@ -92,3 +92,8 @@ Render each finding's Severity as a colored capsule — a small pill with rounde
 - **Info** — neutral / gray
 
 Keep the capsule colors legible against the dark background.
+
+## 6. Open the report file
+
+- This applies only when the report was written to a file (Markdown or HTML). For **Inline** output, no file is produced — skip this step entirely.
+- After writing the report, open it in the platform's default application so it appears for the user right away. Pick the command that matches the current platform: `open "<path>"` on macOS, `xdg-open "<path>"` on Linux, or `start "" "<path>"` on Windows. Use the final path derived in step 3, including any collision suffix.

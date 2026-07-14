@@ -68,3 +68,8 @@ If there are no user-relevant changes within the scope, say so clearly instead o
 ### HTML rendering
 
 When the chosen output format is HTML, render the document as a self-contained page with an inline `<style>` block (no external assets), using a dark theme: a dark background with light, comfortably readable text.
+
+## 9. Open the document file
+
+- This applies only when the summary was written to a file (Markdown or HTML). For **Inline** output, no file is produced — skip this step entirely.
+- After writing the document, open it in the platform's default application so it appears for the user right away. Pick the command that matches the current platform: `open "<path>"` on macOS, `xdg-open "<path>"` on Linux, or `start "" "<path>"` on Windows. Use the final filename derived in step 7, including any collision suffix.

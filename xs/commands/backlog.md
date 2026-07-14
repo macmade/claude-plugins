@@ -81,7 +81,11 @@ Keep the backlog focused on the items themselves. Do not add technical or implem
 
 When the chosen output format is HTML, render the backlog as a self-contained document with an inline `<style>` block (no external assets), using a dark theme: a dark background with light, comfortably readable text.
 
-## 8. Summarize for the user
+## 8. Open the backlog file
+
+- After writing the file, open it in the platform's default application so it appears for the user right away. Pick the command that matches the current platform: `open "<path>"` on macOS, `xdg-open "<path>"` on Linux, or `start "" "<path>"` on Windows. Use the final path derived in step 5, including any collision suffix. When extending an existing backlog, open that same file.
+
+## 9. Summarize for the user
 
 - After writing the file, present the newly created items inline in the conversation so the user can review them at a glance — title and a short description for each. Summarize where necessary to keep it concise.
 - When extending an existing backlog, show only the items that were just added, not the pre-existing ones.

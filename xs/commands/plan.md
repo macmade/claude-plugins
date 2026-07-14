@@ -47,7 +47,8 @@ Every plan has the same structure regardless of the output format chosen in step
 - **Overview** — `<one or two paragraphs: the goal of this plan and the overall approach>`
 - **Questions & answers** — every clarifying question you asked about the plan's content, each paired with the user's answer. Exclude the mechanical questions from steps 1 and 2 (which source file to use, the chosen output format, and the plan's filename and location) — these belong to the planning process, not the plan. Omit the section only if no content questions were asked.
 - **Notes** — an optional, free-form section between the overview and the milestones for anything you find useful to capture before diving into the milestones: relevant context, key files or components, conventions to follow, assumptions, open questions, risks, or references. Include only what is genuinely helpful; omit the section if there is nothing worth recording.
-- **Milestones** — one entry per milestone, repeated as many times as the work requires. For large plans, group related milestones under named phases when it makes the plan clearer; otherwise list the milestones directly. Each milestone contains:
+- **Table of contents** — a milestone index placed just before the milestones themselves. List every milestone in order, and for each entry: a link to that milestone's own section below, plus its current **Status**. When milestones are grouped under named phases, mirror that grouping in the table of contents. Render it idiomatically in the chosen format: in Markdown, a list of links to the milestone headings (using their auto-generated heading anchors) with the status shown beside each; in HTML, a list of anchor links (`href="#<milestone-id>"`) with the status shown as the same colored capsule used on the milestone itself. Every entry's status must always match the status of the milestone it links to — the implement command keeps the two in sync as work progresses.
+- **Milestones** — one entry per milestone, repeated as many times as the work requires. For large plans, group related milestones under named phases when it makes the plan clearer; otherwise list the milestones directly. Give each milestone a stable anchor so the table of contents can link to it: a Markdown heading produces one automatically, and in HTML add an explicit `id` to the milestone's heading or container. Each milestone contains:
   - **Title** — `<short milestone title>`
   - **Goal** — `<what this milestone achieves and why>`
   - **Tasks** — a checklist of the concrete steps to complete the milestone
@@ -70,4 +71,8 @@ Render each milestone's Status as a colored capsule — a small pill with rounde
 - **In progress** — amber or blue
 - **Completed** — green
 
-Keep the capsule colors legible against the dark background.
+Keep the capsule colors legible against the dark background. Use the same status capsules in the table of contents, and give each milestone an `id` so the table-of-contents links resolve.
+
+## 5. Open the plan file
+
+- After writing the plan, open it in the platform's default application so it appears for the user right away. Pick the command that matches the current platform: `open "<path>"` on macOS, `xdg-open "<path>"` on Linux, or `start "" "<path>"` on Windows. Use the final filename derived in step 2, including any collision suffix.

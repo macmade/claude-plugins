@@ -98,3 +98,8 @@ The output document follows the template below — the release notes only, with 
   - If `origin` is missing, is not a GitHub remote, or cannot be parsed, omit the entire `## Changelog` section gracefully.
 
 If there are no user-relevant changes within the scope, say so clearly instead of inventing entries.
+
+## 10. Open the release notes file
+
+- This applies only when the notes were written to a file (Markdown). For **Inline** output, no file is produced — skip this step entirely.
+- After writing the file, open it in the platform's default application so it appears for the user right away. Pick the command that matches the current platform: `open "<path>"` on macOS, `xdg-open "<path>"` on Linux, or `start "" "<path>"` on Windows. Use the final filename derived in step 8, including any collision suffix.
